@@ -340,9 +340,13 @@ figcaption { font-size: .85rem; color: var(--text-muted); margin-top: .75rem; ma
 /* Wide figures: dense multi-country scatterplots need more than the text measure.
    They break out to the full page width and scroll horizontally on small screens. */
 figure.wide { margin: 2.5rem 0; }
-figure.wide a { display: block; border-radius: 4px; overflow: hidden; }
+figure.wide a { display: block; border-radius: 4px; overflow: hidden; text-align: center; }
 figure.wide img {
-  width: 100%; height: auto; display: block;
+  /* Scale to fit BOTH the column and the viewport height, so a tall
+     scatterplot never runs past the bottom of a laptop screen. */
+  width: auto; max-width: 100%;
+  height: auto; max-height: 70vh;
+  display: block; margin: 0 auto;
   border: 1px solid var(--rule); border-radius: 4px;
   background: #fff; padding: .5rem;
 }
